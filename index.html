@@ -1,84 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+        <button href="#" id="btnFacebook">facebook</button>
 
-<body>
+        <script>
+            const user ={
+                id:'',
+                oauth_provider:'',
+                oauth_uid:'',
+                firstName:'',
+                lastName:'',
+                email:'',
+                gender:'',
+                picture:'',
+                link:'',
+                created:'',
+                modified:'',
+            }
+        </script>
+        <script>
 
-    <button id="btnFacebook">facebook</button>
-
-    <script>
-        const user = {
-            id: '',
-            oauth_provider: '',
-            oauth_uid: '',
-            firstName: '',
-            lastName: '',
-            email: '',
-            gender: '',
-            picture: '',
-            link: '',
-            created: '',
-            modified: '',
-        }
-
-        document.getElementById("btnFacebook").addEventListener("click", e => {
-            e.preventDefault();
-
-            alert('teste');
-
-            window.fbAsyncInit = function () {
+            window.fbAsyncInit = function() {
                 FB.init({
-                    appId: '6154626134595234',
-                    xfbml: true,
-                    version: 'v16.0'
+                appId      : '6154626134595234',
+                xfbml      : true,
+                version    : 'v16.0'
                 });
                 FB.AppEvents.logPageView();
-                
-                   FB.login(function (response) {
-                    if (response.authResponse) {
-                        console.log('Welcome!  Fetching your information.... ');
-                        FB.api('/me', function (response) {
-                            console.log('Good to see you, ' + response.name + '.');
-                        });
-                    } else {
-                        console.log('User cancelled login or did not fully authorize.');
-                    }
-                });
             };
-        })
 
 
 
 
 
-        // window.fbAsyncInit = function() {
-        //   FB.init({
-        //     appId            : '6154626134595234',
-        //     autoLogAppEvents : true,
-        //     xfbml            : true,
-        //     version          : 'v16.0'
-        //   });
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId            : '6154626134595234',
+            autoLogAppEvents : true,
+            xfbml            : true,
+            version          : 'v16.0'
+          });
 
-        // FB.login(function(response) {
-        //     if (response.authResponse) {
-        //         console.log('Welcome!  Fetching your information.... ');
-        //         FB.api('/me', function(response) {
-        //         console.log('Good to see you, ' + response.name + '.');
-        //     });
-        // } else {
-        //     console.log('User cancelled login or did not fully authorize.');
-        //     }
-        // });
-        // };
-    </script>
-    <!-- <script async defer crossorigin="anonymous"
-            src="https://connect.facebook.net/en_US/sdk.js"></script> -->
-</body>
-
+        FB.login(function(response) {
+            if (response.authResponse) {
+                console.log('Welcome!  Fetching your information.... ');
+                FB.api('/me', function(response) {
+                console.log('Good to see you, ' + response.name + '.');
+            });
+        } else {
+            console.log('User cancelled login or did not fully authorize.');
+            }
+        });
+        };
+      </script>
+        <script async defer crossorigin="anonymous"
+            src="https://connect.facebook.net/en_US/sdk.js"></script>
+    </body>
 </html>
